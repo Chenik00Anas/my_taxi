@@ -11,9 +11,9 @@ My Taxi is a Flutter-based mobile application designed to simulate a taxi bookin
 - **Feedback Screen**: Allows users to submit feedback, including a rating and comments, which are saved locally in a JSON file.
 
 ## Screenshots
-![Splash Screen](splash.png)
-![Trajectory Screen](trajectory.png)
-![Feedback Screen](feedback.png)
+<img src="splash.png" alt="Splash Screen" width="300" />
+<img src="trajectory.png" alt="Trajectory Screen" width="300" />
+<img src="feedback.png" alt="Feedback Screen" width="300" />
 
 ## Getting Started
 
