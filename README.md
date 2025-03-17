@@ -1,8 +1,8 @@
 ```markdown
-# Test Taxi - Flutter Project
+# My Taxi - Flutter Project
 
 ## Overview
-Test Taxi is a Flutter-based mobile application designed to simulate a taxi booking experience. The app allows users to view predefined trajectories, track their location on a map, and provide feedback. This project demonstrates Flutter's capabilities in building cross-platform mobile applications with a focus on UI/UX design and real-time functionality.
+My Taxi is a Flutter-based mobile application designed to simulate a taxi booking experience. The app allows users to view predefined trajectories, track their location on a map, and provide feedback. This project demonstrates Flutter's capabilities in building cross-platform mobile applications with a focus on UI/UX design and real-time functionality.
 
 ## Features
 - **Splash Screen**: A welcoming screen that transitions to the main screen after a brief delay.
@@ -11,7 +11,6 @@ Test Taxi is a Flutter-based mobile application designed to simulate a taxi book
 - **Feedback Screen**: Allows users to submit feedback, including a rating and comments, which are saved locally in a JSON file.
 
 ## Screenshots
-Include some screenshots of your app here. For example:
 ![Splash Screen](screenshots/splash.png)
 ![Trajectory Screen](screenshots/trajectory.png)
 ![Feedback Screen](screenshots/feedback.png)
@@ -26,8 +25,8 @@ Include some screenshots of your app here. For example:
 ### Installation
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/test-taxi.git
-   cd test-taxi
+   git clone https://github.com/Chenik00Anas/my_taxi.git
+   cd my_taxi
    ```
 
 2. **Install dependencies**
@@ -72,15 +71,12 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/YourFeatureName`).
 5. Open a pull request.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 - Flutter team for the amazing framework.
 - Open-source contributors for their libraries and tools.
 
 ## Contact
 For any questions or feedback, please reach out to:
-- **Your Name** - [your.email@example.com](mailto:your.email@example.com)
-- **Project Link**: [https://github.com/yourusername/test-taxi](https://github.com/yourusername/test-taxi)
+- **CHENIK Anas** - [chenikanas03@gmail.com](mailto:chenikanas03@gmail.com)
+- **Project Link**: [https://github.com/Chenik00Anas/my_taxi]([https://github.com/yourusername/test-taxi](https://github.com/Chenik00Anas/my_taxi)
 ```
