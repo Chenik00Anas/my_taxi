@@ -1,4 +1,3 @@
-// lib/src/screens/trajectory_screen.dart
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../models/trajectory.dart';
@@ -54,8 +53,43 @@ class _TrajectoryScreenState extends State<TrajectoryScreen> {
         selectedIndex = null;
       } else {
         selectedIndex = index;
+        _zoomOnTrajectory(trajectories[index]);
       }
     });
+  }
+
+  void _zoomOnTrajectory(Trajectory trajectory) {
+    // Calculer les limites du trajet
+    LatLngBounds bounds = _calculateBounds(trajectory.points);
+
+    // Animer la caméra pour zoomer sur le trajet
+    mapController.animateCamera(
+      CameraUpdate.newLatLngBounds(bounds, 50), // 50 est la marge en pixels
+    );
+  }
+
+  LatLngBounds _calculateBounds(List<LatLng> points) {
+    double? minLat, maxLat, minLng, maxLng;
+
+    for (var point in points) {
+      if (minLat == null || point.latitude < minLat) {
+        minLat = point.latitude;
+      }
+      if (maxLat == null || point.latitude > maxLat) {
+        maxLat = point.latitude;
+      }
+      if (minLng == null || point.longitude < minLng) {
+        minLng = point.longitude;
+      }
+      if (maxLng == null || point.longitude > maxLng) {
+        maxLng = point.longitude;
+      }
+    }
+
+    return LatLngBounds(
+      northeast: LatLng(maxLat!, maxLng!),
+      southwest: LatLng(minLat!, minLng!),
+    );
   }
 
   Set<Marker> _getAllStationsMarkers() {
@@ -88,10 +122,17 @@ class _TrajectoryScreenState extends State<TrajectoryScreen> {
   }
 
   void _centerMapOnUserLocation() async {
-    final userLocation = await locationService.getCurrentLocation();
-    mapController.animateCamera(
-      CameraUpdate.newLatLngZoom(userLocation, 14),
-    );
+    try {
+      final userLocation = await locationService.getCurrentLocation();
+      mapController.animateCamera(
+        CameraUpdate.newLatLngZoom(userLocation, 14),
+      );
+    } catch (e) {
+      // Gérer les erreurs (par exemple, permissions, services de localisation désactivés)
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erreur: $e')),
+      );
+    }
   }
 
   @override
@@ -133,29 +174,27 @@ class _TrajectoryScreenState extends State<TrajectoryScreen> {
           ),
         ],
       ),
-      // lib/src/screens/trajectory_screen.dart
-floatingActionButton: Column(
-  mainAxisAlignment: MainAxisAlignment.end,
-  children: [
-    FloatingActionButton(
-      onPressed: _centerMapOnUserLocation,
-      child: const Icon(Icons.my_location),
-      backgroundColor: Colors.blue,
-    ),
-    const SizedBox(height: 16),
-    // Supprimez le widget Hero ici si vous l'utilisez autour du FloatingActionButton
-    FloatingActionButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const FeedbackScreen()),
-        );
-      },
-      child: const Icon(Icons.feedback),
-      backgroundColor: Colors.green,
-    ),
-  ],
-),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: _centerMapOnUserLocation,
+            child: const Icon(Icons.my_location),
+            backgroundColor: Colors.blue,
+          ),
+          const SizedBox(height: 16),
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FeedbackScreen()),
+              );
+            },
+            child: const Icon(Icons.feedback),
+            backgroundColor: Colors.green,
+          ),
+        ],
+      ),
     );
   }
 }

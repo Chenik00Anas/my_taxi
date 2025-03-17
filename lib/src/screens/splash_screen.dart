@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             const SizedBox(height: 20),
             Text(
-              'Transport App', // Texte du Splash Screen
+              'my taxi', // Texte du Splash Screen
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
