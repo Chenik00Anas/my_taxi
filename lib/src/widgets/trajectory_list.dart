@@ -18,8 +18,6 @@ class TrajectoryList extends StatelessWidget {
 @override
 Widget build(BuildContext context) {
   return ListView.builder(
-    shrinkWrap: true, // Permet à la ListView de s'adapter à son contenu
-    physics: const NeverScrollableScrollPhysics(), // Désactive le défilement
     itemCount: trajectories.length,
     itemBuilder: (context, index) {
       final trajectory = trajectories[index];
